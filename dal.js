@@ -17,11 +17,14 @@ function getRobot (roboName) {
   return pickRobot;
 }
 
+function addRobot (newRobot) {
+  robots.push(newRobot);
+  return robots;
+}
 
-let roboLength = data.length;
-console.log(roboLength);
 
-// module.exports = {
-//
-//
-// }
+module.exports = {
+  getRobots: getRobots,
+  getRobot: getRobot,
+  addRobot: addRobot
+}
