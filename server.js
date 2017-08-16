@@ -19,7 +19,6 @@ app.get('/index', function(request, response) {
   response.render('index', {robos: robos});
 })
 
-
 app.get('/index/:id', function (request, response) {
   const oneRobot = roboDal.getRobot(parseInt(request.params.id, 10));
   if (oneRobot.id) {
@@ -30,8 +29,8 @@ app.get('/index/:id', function (request, response) {
 })
 
 //=====================================
-app.set('port', 3003);
+app.set('port', 3000);
 
 app.listen(app.get('port'), function () {
-  console.log('Application has started at port 3003')
+  console.log('Application has started at port 3000')
 });
