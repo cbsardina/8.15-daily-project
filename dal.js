@@ -3,28 +3,26 @@
 const data = require('./data.js')
 const robots = data.users;            //robots is data entry point
 
+
 function getRobots () {
   return robots;
 }
 
-function getRobot (roboName) {
-  let pickRobot = {};
-  for (let i in robots) {
-    if (robots[i].name === roboName) {
-      pickRobot = robots[i];
+let idCheck = robots[0].id;
+console.log("Should be 1");  //this returns 1 which should work
+console.log(idCheck);       //problem seems to be with oneRobot
+                            //in server.js
+function getRobot (roboId) {
+  let oneRobot = {};
+  for (let i = 1; i < robots.length; i++) {
+    if (robots[i].id === roboId) {
+      oneRobot = robots[i];
     }
   }
-  return pickRobot;
+  return oneRobot
 }
-
-function addRobot (newRobot) {
-  robots.push(newRobot);
-  return robots;
-}
-
 
 module.exports = {
   getRobots: getRobots,
-  getRobot: getRobot,
-  addRobot: addRobot
+  getRobot: getRobot
 }
