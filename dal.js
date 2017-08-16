@@ -8,13 +8,9 @@ function getRobots () {
   return robots;
 }
 
-let idCheck = robots[0].id;
-console.log("Should be 1");  //this returns 1 which should work
-console.log(idCheck);       //problem seems to be with oneRobot
-                            //in server.js
 function getRobot (roboId) {
   let oneRobot = {};
-  for (let i = 1; i < robots.length; i++) {
+  for (let i in robots) {
     if (robots[i].id === roboId) {
       oneRobot = robots[i];
     }

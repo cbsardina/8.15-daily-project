@@ -6,11 +6,11 @@ const mustacheExpress = require('mustache-express')
 const roboDal = require('./dal');
 
 // Register '.mustache' extension with The Mustache Express
-
 app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
+//set up 'public' directory for styles.css
 app.use(express.static('public'));
 
 //======================================
@@ -21,9 +21,7 @@ app.get('/index', function(request, response) {
 
 
 app.get('/index/:id', function (request, response) {
-  const oneRobot = roboDal.getRobot(request.params.id);
-  console.log("oneRobot below:");
-  console.log(oneRobot); //oneRobot is assigned an empty {}
+  const oneRobot = roboDal.getRobot(parseInt(request.params.id, 10));
   if (oneRobot.id) {
     response.render('oneRobo', oneRobot)
   } else {
@@ -32,8 +30,8 @@ app.get('/index/:id', function (request, response) {
 })
 
 //=====================================
-app.set('port', 3001);
+app.set('port', 3003);
 
 app.listen(app.get('port'), function () {
-  console.log('Application has started at port 3001')
+  console.log('Application has started at port 3003')
 });
